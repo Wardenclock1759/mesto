@@ -1,0 +1,7 @@
+.elements__content {
+    padding: 25px 20px 31px 21px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: auto; 
+}
