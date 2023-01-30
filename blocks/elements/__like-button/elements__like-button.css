@@ -6,4 +6,14 @@
     border: none;
     background-position: center center;
     align-self: center;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+.elements__like-button:hover {
+    opacity: 0.5;
+}
+
+.elements__like-button_active {
+    background: url("./../../../images/like-button-active.svg") no-repeat;
 }

@@ -7,4 +7,10 @@
     border: 1px solid #FFFFFF;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     align-self: end;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
 }
