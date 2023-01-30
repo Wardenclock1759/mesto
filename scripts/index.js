@@ -1,7 +1,7 @@
-let like_buttons = document.querySelectorAll(".elements__like-button"); 
+const likeButtons = document.querySelectorAll(".elements__like-button"); 
 
-for (let button of like_buttons) {
+likeButtons.forEach((button) => {
     button.addEventListener("click", () => {
         button.classList.toggle("elements__like-button_active")
     });
-}
+});
