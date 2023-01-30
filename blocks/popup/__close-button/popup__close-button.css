@@ -6,7 +6,7 @@
     height: 32px;
     background: url("./../../../images/close-button.svg") no-repeat;
     border: none;
-    position: relative;
+    position: absolute;
     align-self: flex-end;
     cursor: pointer;
     transition: .3s linear;
