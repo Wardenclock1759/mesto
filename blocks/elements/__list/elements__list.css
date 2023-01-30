@@ -7,3 +7,9 @@
     row-gap: 20px;
     column-gap: 17px;
 }
+
+@media screen and (max-width: 900px) {
+    .elements__list {
+        grid-template-columns: 1fr;
+    }
+} 

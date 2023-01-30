@@ -1,4 +1,4 @@
-.popup__subtitle-input{
+.popup__subtitle-input {
     margin: 30px 36px 0;
     padding: 0;
     border: none;
@@ -11,3 +11,11 @@
     min-height: 27px;
     outline: none;
 }
+
+@media screen and (max-width: 900px) {
+    .popup__subtitle-input {
+        max-width: 238px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+} 

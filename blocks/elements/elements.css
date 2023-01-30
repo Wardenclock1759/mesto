@@ -3,3 +3,10 @@
     padding-top: 51px;
     margin: 0 auto;
 }
+
+@media screen and (max-width: 900px) {
+    .elements {
+        max-width: 282px;
+        padding-top: 36px;
+    }
+} 

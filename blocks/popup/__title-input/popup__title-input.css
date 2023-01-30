@@ -11,3 +11,12 @@
     min-height: 27px;
     outline: none;
 }
+
+@media screen and (max-width: 900px) {
+    .popup__title-input {
+        padding: 0;
+        max-width: 238px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+} 
