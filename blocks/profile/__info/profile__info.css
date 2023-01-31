@@ -3,8 +3,7 @@
     display: grid;
     grid-template-areas: 
         "name button"
-        "work ."
-        ;
+        "work .";
     column-gap: 10px;
     justify-content: center;
 }
