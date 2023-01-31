@@ -1,6 +1,6 @@
 .profile__subtitle {
     margin: 0;
-    padding-bottom: 0;
+    padding-top: 10px;
     color: #FFF;
     font-size: 18px;
     line-height: 22px;
@@ -9,6 +9,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    grid-area: work;
 }
 
 @media screen and (max-width: 900px) {
@@ -16,5 +17,6 @@
         font-size: 14px;
         line-height: 17px;
         align-self: center;
+        text-align: center;
     }
 } 
