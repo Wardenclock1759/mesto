@@ -4,7 +4,7 @@
     grid-template-areas: 
         "name button"
         "work ."
-    ;
+        ;
     column-gap: 10px;
     justify-content: center;
 }
