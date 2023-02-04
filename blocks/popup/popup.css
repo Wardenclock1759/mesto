@@ -4,7 +4,3 @@
     display: none;
     background: rgba(0, 0, 0, 0.5);
 }
-
-.popup_opened {
-    display: flex;
-}

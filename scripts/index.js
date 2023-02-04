@@ -4,25 +4,30 @@ const closeButton = document.querySelector(".popup__close-button");
 
 likeButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        button.classList.toggle("elements__like-button_active")
+        button.classList.toggle("elements__like-button_active");
     });
 });
 
-let formElement = document.querySelector(".popup"); 
+let formContainer = document.querySelector(".popup"); 
+let form = document.querySelector(".popup__form"); 
 let nameText = document.querySelector(".profile__title"); 
 let jobText = document.querySelector(".profile__subtitle"); 
 
-let nameInput = document.querySelector(".popup__title-input"); 
-let jobInput = document.querySelector(".popup__subtitle-input"); 
+let nameInput = document.querySelector("#name-input"); 
+let jobInput = document.querySelector("#about-input"); 
+
+function togglePoput() {
+    formContainer.classList.toggle("popup__opened");
+}
 
 editButton.addEventListener("click", () => {
-    formElement.classList.toggle("popup_opened")
+    togglePoput();
     nameInput.value = nameText.textContent;
     jobInput.value = jobText.textContent;
 });
 
 closeButton.addEventListener("click", () => {
-    formElement.classList.toggle("popup_opened")
+    togglePoput();
 });
 
 function handleFormSubmit (evt) {
@@ -31,7 +36,7 @@ function handleFormSubmit (evt) {
     nameText.textContent = nameInput.value;
     jobText.textContent = jobInput.value;
 
-    formElement.classList.toggle("popup_opened")
+    togglePoput();
 }
 
-formElement.addEventListener('submit', handleFormSubmit); 
+form.addEventListener('submit', handleFormSubmit); 

@@ -13,13 +13,13 @@
 }
 
 .popup__close-button:hover {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 900px) {
     .popup__close-button {
         margin-right: 0;
-        margin-top: -40px;
+        margin-top: -38px;
         background: url("./../../../images/close-button-small.svg") no-repeat;
         width: 20px;
         height: 20px;
