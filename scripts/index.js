@@ -17,7 +17,7 @@ let nameInput = document.querySelector("#name-input");
 let jobInput = document.querySelector("#about-input"); 
 
 function togglePoput() {
-    formContainer.classList.toggle("popup__opened");
+    formContainer.classList.toggle("popup_opened");
 }
 
 editButton.addEventListener("click", () => {
