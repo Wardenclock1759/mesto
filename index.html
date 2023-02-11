@@ -20,56 +20,26 @@
             </div>
             <button type="button" class="profile__add-button"></button>
         </section>
-        <section class="elements">
+        <div class="elements">
             <ul class="elements__list">
-                <li class="elements__element">
-                    <img src="./images/karachaevsk.png" alt="Старый замок" class="elements__image">
-                    <div class="elements__content">
-                        <h2 class="elements__text">Карачаев</h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img src="./images/elbrus.png" alt="Гора Эльбрус" class="elements__image">
-                    <div class="elements__content">
-                        <h2 class="elements__text">Гора Эльбрус</h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img src="./images/dombai.png" alt="Гора Домбай" class="elements__image">
-                    <div class="elements__content">
-                        <h2 class="elements__text">Домбай</h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img src="./images/dombai.png" alt="Гора Домбай" class="elements__image">
-                    <div class="elements__content">
-                        <h2 class="elements__text">Домбай</h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img src="./images/elbrus.png" alt="Гора Эльбрус" class="elements__image">
-                    <div class="elements__content">
-                        <h2 class="elements__text">Гора Эльбрус</h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img src="./images/karachaevsk.png" alt="Старый замок" class="elements__image">
-                    <div class="elements__content">
-                        <h2 class="elements__text">Карачаево-Черкесовск</h2>
-                        <button class="elements__like-button" type="button"></button>
-                    </div>
-                </li>
             </ul>
-        </section>
+        </div>
     </main>
     <footer class="footer">
         <p class="footer__text">&copy; 2023 Mesto Russia</p>
     </footer>
+    <template id="element-template">
+        <li class="elements__element">
+            <div class="elements__container">
+                <img src="" alt="" class="elements__image">
+                <button class="elements__delete-button"></button>
+            </div>
+            <div class="elements__content">
+                <h2 class="elements__text"></h2>
+                <button class="elements__like-button" type="button"></button>
+            </div>
+        </li>
+    </template>
     <div class="popup">
         <div class="popup__container">
             <button class="popup__close-button" type="button"></button>
