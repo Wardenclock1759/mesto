@@ -43,7 +43,7 @@ displayCloseButton.addEventListener("click", () => {
 });
 
 function openImageDisplay(imageName, imageURL) {
-    displayName.value = imageName;
+    displayName.textContent = imageName;
     displayImage.setAttribute("style", "content: url("+imageURL+")");
     toggleDisplayContainer();
 }
