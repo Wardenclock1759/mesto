@@ -1,0 +1,6 @@
+.display__image {
+    margin: auto;
+    object-fit: contain;
+    max-width: 75vw;
+    max-height: calc(75vh - 22px);
+}

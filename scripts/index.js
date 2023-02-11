@@ -29,15 +29,38 @@ const initialCards = [
     }
   ]; 
 
+const displayContainer = document.querySelector(".display");
+const displayImage = document.querySelector(".display__image");
+const displayName = document.querySelector(".display__name");
+const displayCloseButton = document.querySelector(".display__close-button");
+
+function toggleDisplayContainer() {
+    displayContainer.classList.toggle("display_opened");
+}
+
+displayCloseButton.addEventListener("click", () => {
+    toggleDisplayContainer();
+});
+
+function openImageDisplay(imageName, imageURL) {
+    displayName.value = imageName;
+    displayImage.setAttribute("style", "content: url("+imageURL+")");
+    toggleDisplayContainer();
+}
+
 function addPhoto(textValue, imageURL) {
     const photoTemplate = document.querySelector('#element-template').content;
     const photoElement = photoTemplate.querySelector('.elements__element').cloneNode(true);
     const likeButton = photoElement.querySelector('.elements__like-button');
     const deleteButton = photoElement.querySelector('.elements__delete-button');
+    const image = photoElement.querySelector('.elements__image');
 
     photoElement.querySelector('.elements__text').textContent = textValue;
-    photoElement.querySelector('.elements__image').src = imageURL;
-
+    image.src = imageURL;
+    
+    image.addEventListener("click", () => {
+        openImageDisplay(textValue, imageURL)
+    });
     deleteButton.addEventListener("click", () => {
         elementsList.removeChild(deleteButton.parentElement.parentElement);
     });
