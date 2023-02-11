@@ -10,10 +10,10 @@
     background: url("./../../../images/close-button.svg") no-repeat;
     border: none;
     cursor: pointer;
-    transition: .3s linear;
 }
 
 .popup__close-button:hover {
+    transition: .3s linear;
     opacity: 0.6;
 }
 

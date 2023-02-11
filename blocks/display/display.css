@@ -4,5 +4,7 @@
     align-items: center;
     inset: 0;
     background: rgba(0, 0, 0, 0.9);
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s linear;
 }
