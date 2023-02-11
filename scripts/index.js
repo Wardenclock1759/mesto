@@ -1,5 +1,5 @@
 const editButton = document.querySelector(".profile__edit-button"); 
-const closeButton = document.querySelector(".popup__close-button"); 
+const addButton = document.querySelector(".profile__add-button");
 const elementsList = document.querySelector(".elements__list"); 
 
 const initialCards = [
@@ -32,9 +32,18 @@ const initialCards = [
 function addPhoto(textValue, imageURL) {
     const photoTemplate = document.querySelector('#element-template').content;
     const photoElement = photoTemplate.querySelector('.elements__element').cloneNode(true);
+    const likeButton = photoElement.querySelector('.elements__like-button');
+    const deleteButton = photoElement.querySelector('.elements__delete-button');
 
     photoElement.querySelector('.elements__text').textContent = textValue;
     photoElement.querySelector('.elements__image').src = imageURL;
+
+    deleteButton.addEventListener("click", () => {
+        elementsList.removeChild(deleteButton.parentElement.parentElement);
+    });
+    likeButton.addEventListener("click", () => {
+        likeButton.classList.toggle("elements__like-button_active");
+    });
 
     elementsList.prepend(photoElement);
 }
@@ -43,52 +52,64 @@ initialCards.forEach((element) => {
     addPhoto(element.name, element.link)
 });
 
-function renderButtons() {
-    const likeButtons = document.querySelectorAll(".elements__like-button"); 
-    likeButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            button.classList.toggle("elements__like-button_active");
-        });
-    });
-    
-    const deleteButtons = document.querySelectorAll(".elements__delete-button");
-    deleteButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            elementsList.removeChild(button.parentElement.parentElement)
-        });
-    });
-}
-renderButtons();
+const profileFormContainer = document.querySelector("#popup__content_profile"); 
+const profileForm = profileFormContainer.querySelector("#form_profile"); 
+const closeProfileButton = document.querySelector("#btn_close_profile"); 
 
-const formContainer = document.querySelector(".popup"); 
-const form = document.querySelector(".popup__form"); 
-let nameText = document.querySelector(".profile__title"); 
-let jobText = document.querySelector(".profile__subtitle"); 
+const nameInput = profileFormContainer.querySelector("#name-input"); 
+const jobInput = profileFormContainer.querySelector("#about-input"); 
 
-let nameInput = document.querySelector("#name-input"); 
-let jobInput = document.querySelector("#about-input"); 
+const nameText = document.querySelector(".profile__title"); 
+const jobText = document.querySelector(".profile__subtitle"); 
 
-function togglePoput() {
-    formContainer.classList.toggle("popup_opened");
+function toggleProfilePopup() {
+    profileFormContainer.classList.toggle("popup_opened");
 }
 
 editButton.addEventListener("click", () => {
-    togglePoput();
+    toggleProfilePopup();
     nameInput.value = nameText.textContent;
     jobInput.value = jobText.textContent;
 });
 
-closeButton.addEventListener("click", () => {
-    togglePoput();
+closeProfileButton.addEventListener("click", () => {
+    toggleProfilePopup();
 });
 
-function handleFormSubmit (evt) {
+function handleProfileSubmit (evt) {
     evt.preventDefault();
 
     nameText.textContent = nameInput.value;
     jobText.textContent = jobInput.value;
 
-    togglePoput();
+    toggleProfilePopup();
+}
+profileForm.addEventListener('submit', handleProfileSubmit); 
+
+const photoFormContainer = document.querySelector("#popup__content_photo"); 
+const photoForm = photoFormContainer.querySelector("#form_photo"); 
+const closePhotoButton = document.querySelector("#btn_close_photo"); 
+
+const titleInput = photoFormContainer.querySelector("#title-input"); 
+const urlInput = photoFormContainer.querySelector("#url-input"); 
+
+function togglePhotoPopup() {
+    photoFormContainer.classList.toggle("popup_opened");
 }
 
-form.addEventListener('submit', handleFormSubmit); 
+addButton.addEventListener("click", () => {
+    togglePhotoPopup();
+});
+
+closePhotoButton.addEventListener("click", () => {
+    togglePhotoPopup();
+});
+
+function handlePhotoSubmit (evt) {
+    evt.preventDefault();
+    addPhoto(titleInput.value, urlInput.value);
+    titleInput.value='';
+    urlInput.value='';
+    togglePhotoPopup();
+}
+photoForm.addEventListener('submit', handlePhotoSubmit); 
