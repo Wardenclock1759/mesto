@@ -3,4 +3,6 @@
     margin: auto;
     max-width: 75vw;
     max-height: 75vh;
+    cursor: default;
+    z-index: 2;
 }

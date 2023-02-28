@@ -33,20 +33,32 @@
             <button class="popup__close-button" type="button" id="btn_close_profile"></button>
             <form class="popup__form" method="post" id="form_profile">
                 <h2 class="popup__text">Редактировать профиль</h2>
-                <input type="text" class="popup__text-input" id="name-input" name="name-input" placeholder="Имя">
-                <input type="text" class="popup__text-input" id="about-input" name="about-input" placeholder="О себе">
-                <button class="popup__save-button" type="submit">Сохранить</button>
+                <label for="name-input" class="popup__label">
+                    <input type="text" class="popup__input" id="name-input" name="name-input" placeholder="Имя" minlength="2" maxlength="40" required>
+                    <span class="popup__input-error name-input-error"></span>
+                </label>
+                <label for="about-input" class="popup__label">
+                    <input type="text" class="popup__input" id="about-input" name="about-input" placeholder="О себе" minlength="2" maxlength="200">
+                    <span class="popup__input-error about-input-error"></span>
+                </label>
+                <button class="popup__button" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
     <div class="popup" id="popup__content_photo">
         <div class="popup__container">
             <button class="popup__close-button" type="button" id="btn_close_photo"></button>
-            <form class="popup__form" method="post" id="form_photo">
+            <form class="popup__form" method="post" id="form_photo" novalidate>
                 <h2 class="popup__text">Новое место</h2>
-                <input type="text" class="popup__text-input" id="title-input" name="title-input" placeholder="Название">
-                <input type="text" class="popup__text-input" id="url-input" name="url-input" placeholder="Ссылка на картинку">
-                <button class="popup__save-button" type="submit">Создать</button>
+                <label for="title-input" class="popup__label">
+                    <input type="text" class="popup__input" id="title-input" name="title-input" placeholder="Название" minlength="2" maxlength="30" required>
+                    <span class="popup__input-error title-input-error"></span>
+                </label>
+                <label for="url-input" class="popup__label">
+                    <input type="url" class="popup__input" id="url-input" name="url-input" placeholder="Ссылка на картинку" required>
+                    <span class="popup__input-error url-input-error"></span>
+                </label>
+                <button class="popup__button" type="submit">Создать</button>
             </form>
         </div>
     </div>
@@ -70,6 +82,7 @@
         </li>
     </template>
     <script src="./scripts/data.js"></script> 
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script> 
 </body>
 </html>

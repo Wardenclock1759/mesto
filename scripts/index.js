@@ -2,6 +2,7 @@ const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 const elementsList = document.querySelector(".elements__list"); 
 
+const popups = document.querySelectorAll(".popup")
 const albumFormContainer = document.querySelector("#popup__content_album"); 
 const displayImage = document.querySelector(".popup__image");
 const displayName = document.querySelector(".popup__title");
@@ -103,8 +104,22 @@ displayCloseButton.addEventListener("click", () => {
     closePopup(albumFormContainer);
 });
 
-photoForm.addEventListener('submit', handlePhotoSubmit); 
-profileForm.addEventListener('submit', handleProfileSubmit); 
+popups.forEach((popup) => {
+    popup.addEventListener("click", (event) => {
+        if (event.target.classList.contains("popup")) {
+            closePopup(popup);
+        }
+    })
+
+    popup.addEventListener("keyup", (event) => {
+        if (event.key === "Escape") {
+            closePopup(popup);
+        }
+    });
+});
+
+photoForm.addEventListener("submit", handlePhotoSubmit); 
+profileForm.addEventListener("submit", handleProfileSubmit); 
 
 initialCards.forEach((element) => {
     elementsList.append(createPhoto(element.name, element.link));
