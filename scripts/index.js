@@ -6,11 +6,9 @@ const popups = document.querySelectorAll(".popup")
 const albumFormContainer = document.querySelector("#popup__content_album"); 
 const displayImage = document.querySelector(".popup__image");
 const displayName = document.querySelector(".popup__title");
-const displayCloseButton = document.querySelector("#btn_close_album");
 
 const profileFormContainer = document.querySelector("#popup__content_profile"); 
 const profileForm = profileFormContainer.querySelector("#form_profile"); 
-const closeProfileButton = document.querySelector("#btn_close_profile"); 
 const nameInput = profileFormContainer.querySelector("#name-input"); 
 const jobInput = profileFormContainer.querySelector("#about-input"); 
 const nameText = document.querySelector(".profile__title"); 
@@ -18,7 +16,6 @@ const jobText = document.querySelector(".profile__subtitle");
 
 const photoFormContainer = document.querySelector("#popup__content_photo"); 
 const photoForm = photoFormContainer.querySelector("#form_photo"); 
-const closePhotoButton = document.querySelector("#btn_close_photo"); 
 const titleInput = photoFormContainer.querySelector("#title-input"); 
 const urlInput = photoFormContainer.querySelector("#url-input"); 
 
@@ -91,28 +88,19 @@ addButton.addEventListener("click", () => {
     openPopup(photoFormContainer);
 });
 
-closePhotoButton.addEventListener("click", () => {
-    closePopup(photoFormContainer);
-});
-
 editButton.addEventListener("click", () => {
     openPopup(profileFormContainer);
     nameInput.value = nameText.textContent;
     jobInput.value = jobText.textContent;
 });
 
-closeProfileButton.addEventListener("click", () => {
-    closePopup(profileFormContainer);
-});
-
-displayCloseButton.addEventListener("click", () => {
-    closePopup(albumFormContainer);
-});
-
 popups.forEach((popup) => {
-    popup.addEventListener("click", (event) => {
-        if (event.target.classList.contains("popup")) {
-            closePopup(popup);
+    popup.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-button')) {
+            closePopup(popup)
         }
     })
 });
