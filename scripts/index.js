@@ -23,15 +23,13 @@ const titleInput = photoFormContainer.querySelector("#title-input");
 const urlInput = photoFormContainer.querySelector("#url-input"); 
 
 function openPopup(popupWindow) {
-    if (!popupWindow.classList.contains("popup_opened")) {
-        popupWindow.classList.add("popup_opened");
-    }
+    popupWindow.classList.add("popup_opened");
+    document.addEventListener('keydown', closeByEscape);
 }
 
 function closePopup(popupWindow) {
-    if (popupWindow.classList.contains("popup_opened")) {
-        popupWindow.classList.remove("popup_opened");
-    }
+    popupWindow.classList.remove("popup_opened");
+    document.removeEventListener('keydown', closeByEscape);
 }
 
 function openImageDisplay(imageName, imageURL) {
@@ -69,8 +67,7 @@ function handlePhotoSubmit (evt) {
     elementsList.prepend(createPhoto(titleInput.value, urlInput.value));
     
     closePopup(photoFormContainer);
-    titleInput.value='';
-    urlInput.value='';
+    evt.target.reset();
 }
 
 function handleProfileSubmit (evt) {
@@ -80,6 +77,14 @@ function handleProfileSubmit (evt) {
     jobText.textContent = jobInput.value;
 
     closePopup(profileFormContainer);
+    evt.target.reset();
+}
+
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+      const openedPopup = document.querySelector('.popup_opened');
+      closePopup(openedPopup);
+    }
 }
 
 addButton.addEventListener("click", () => {
@@ -110,12 +115,6 @@ popups.forEach((popup) => {
             closePopup(popup);
         }
     })
-
-    popup.addEventListener("keyup", (event) => {
-        if (event.key === "Escape") {
-            closePopup(popup);
-        }
-    });
 });
 
 photoForm.addEventListener("submit", handlePhotoSubmit); 
