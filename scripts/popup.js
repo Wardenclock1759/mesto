@@ -37,9 +37,9 @@ export class ImagePopup extends Popup {
     this._popupTitle = this._popupElement.querySelector('.popup__title');
   }
 
-  open(link, name) {
-    this._popupImage.setAttribute("style", "content: url("+link+")");
-    this._popupTitle.textContent = name;
+  open(cardData) {
+    this._popupImage.setAttribute("style", "content: url("+cardData.link+")");
+    this._popupTitle.textContent = cardData.name;
 
     super.open();
   }

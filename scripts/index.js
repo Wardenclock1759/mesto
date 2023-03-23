@@ -26,14 +26,8 @@ const imagePopup = new ImagePopup("#popup__content_album");
 const profilePopup = new ProfilePopup("#popup__content_profile", () => handleProfileSubmit(document.querySelector(".profile__title"), document.querySelector(".profile__subtitle")));
 const createCardPopup = new CreatePopup("#popup__content_photo", () => handleCreateCardSubmit());
 
-function handleCardClick(link, name) {
-    const popupImage = document.querySelector(".popup__image");
-    const popupTitle = document.querySelector(".popup__title");
-
-    popupImage.src = link;
-    popupTitle.textContent = name;
-
-    imagePopup.open(link, name);
+function handleCardClick(cardData) {
+    imagePopup.open(cardData);
 }
 
 function handleProfileSubmit(nameElement, aboutElement) {
@@ -46,8 +40,8 @@ function handleProfileSubmit(nameElement, aboutElement) {
     profilePopup.close();
 }
 
-function createCard(src, name) {
-    const card = new Card(src, name, "#element-template", () => handleCardClick(src, name));
+function createCard(cardData) {
+    const card = new Card(cardData, "#element-template", () => handleCardClick(cardData));
     const cardElement = card.generateCard();
     return cardElement;
 }
@@ -56,12 +50,16 @@ function handleCreateCardSubmit() {
     const titleInput = photoFormContainer.querySelector("#title-input"); 
     const urlInput = photoFormContainer.querySelector("#url-input"); 
 
-    const card = createCard(urlInput.value, titleInput.value);
+    const cardData = {
+        name: titleInput.value,
+        link: urlInput.value
+    };
+
+    const card = createCard(cardData);
     elementsList.prepend(card);
 
     createCardPopup.close();
 }
-
 
 editButton.addEventListener("click", () => {
     profilePopup.open(nameText.textContent, aboutText.textContent);
@@ -81,6 +79,6 @@ formList.forEach((formElement) => {
 });
 
 cardsList.forEach((element) => {
-    const card = createCard(element.link, element.name);
+    const card = createCard(element);
     elementsList.append(card);
 });
