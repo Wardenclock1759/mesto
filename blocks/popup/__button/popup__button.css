@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-.popup__button:hover {
+.popup__button:hover:enabled {
     transition: .3s linear;
     opacity: 0.8;
 }
