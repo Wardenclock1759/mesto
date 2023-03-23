@@ -1,6 +1,6 @@
 import { cardsList } from "./data.js";
-import { Card } from "./card.js";
-import { FormValidator } from "./formValidator.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 import { ImagePopup, ProfilePopup, CreatePopup} from "./popup.js";
 
 const photoFormContainer = document.querySelector("#popup__content_photo"); 
