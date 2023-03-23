@@ -18,14 +18,14 @@ export class FormValidator {
         errorElement.textContent = '';
     }
   
-    _hasInvalidInput(inputList) {
-        return inputList.some((inputElement) => {
+    _hasInvalidInput() {
+        return this._inputElements.some((inputElement) => {
             return !inputElement.validity.valid;
         });
     };
 
-    _toggleSubmitButtonState(inputList) {
-        const hasInvalidInput = this._hasInvalidInput(inputList);
+    _toggleSubmitButtonState() {
+        const hasInvalidInput = this._hasInvalidInput();
     
         if (hasInvalidInput) {
             this._submitButtonElement.classList.add(this._settings.inactiveButtonClass);
@@ -48,18 +48,18 @@ export class FormValidator {
         this._inputElements = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
         this._submitButtonElement = this._formElement.querySelector(this._settings.submitButtonSelector);
     
-        this._toggleSubmitButtonState(this._inputElements);
+        this._toggleSubmitButtonState();
 
         this._formElement.addEventListener('reset', () => {
             setTimeout(() => {
-                this._toggleSubmitButtonState(this._inputElements);
+                this._toggleSubmitButtonState();
             }, 0);
         });
     
         this._inputElements.forEach((inputElement) => {
                 inputElement.addEventListener('input', () => {
                     this._checkInputValidity(inputElement);
-                    this._toggleSubmitButtonState(this._inputElements);
+                    this._toggleSubmitButtonState();
             });
         });
     }
