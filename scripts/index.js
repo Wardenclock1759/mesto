@@ -73,6 +73,7 @@ addButton.addEventListener("click", () => {
 
 imagePopup.setEventListeners();
 profilePopup.setEventListeners();
+createCardPopup.setEventListeners();
 
 formList.forEach((formElement) => {
     const formValidator = new FormValidator(validationSettings, formElement);
