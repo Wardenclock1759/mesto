@@ -1,7 +1,9 @@
-import { cardsList } from "./data.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { ImagePopup, ProfilePopup, CreatePopup} from "./popup.js";
+import "./pages/index.css";
+
+import { cardsList } from "./scripts/data.js";
+import { Card } from "./scripts/Card.js";
+import { FormValidator } from "./scripts/FormValidator.js";
+import { ImagePopup, ProfilePopup, CreatePopup} from "./scripts/popup.js";
 
 const photoFormContainer = document.querySelector("#popup__content_photo"); 
 const profileFormContainer = document.querySelector("#popup__content_profile"); 
