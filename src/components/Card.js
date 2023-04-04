@@ -1,7 +1,7 @@
-export class Card {
+export default class Card {
     constructor(cardData, templateSelector, handleCardClick) {
         this._name = cardData.name;
-        this._src = cardData.link;
+        this._link = cardData.link;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -31,7 +31,7 @@ export class Card {
       this._likeButton = this._element.querySelector('.elements__like-button');
       this._deleteButton = this._element.querySelector('.elements__delete-button');
   
-      this._cardImage.src = this._src;
+      this._cardImage.src = this._link;
       this._cardImage.alt = "Изображение: " + this._name;
       this._element.querySelector('.elements__text').textContent = this._name;
   
