@@ -148,7 +148,7 @@ function handleCardSubmit(cardData) {
       if (res) {
         const card = new Card(res, cardTemplateSelector, () => handleCardClick(res), handleLikeClick, handleDeleteClick);
         const cardElement = card.generateCard(
-          card._ownerId === userInfo.getUserInfo().id,
+          true,
           card._likes.some(user => user._id === userInfo.getUserInfo().id)
         );
         cardSection.addItem(cardElement);
