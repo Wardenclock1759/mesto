@@ -115,13 +115,13 @@ function handleCardDelete() {
         if (res) {
           cardToDelete.remove();
           cardToDelete = null;
+          this.close();
         }
       })
       .catch((err) => {
         console.log(err);
     })
   }
-  this.close();
 }
 
 function handleProfileSubmit(user) {
@@ -130,6 +130,7 @@ function handleProfileSubmit(user) {
     .then(res => {
       if (res) {
         userInfo.setUserInfo(user);
+        this.close();
       }
     })
     .catch((err) => {
@@ -137,7 +138,6 @@ function handleProfileSubmit(user) {
     })
     .finally(() => {
       profilePopup.renderText(false);
-      this.close();
     });
 }
 
@@ -152,6 +152,7 @@ function handleCardSubmit(cardData) {
           card._likes.some(user => user._id === userInfo.getUserInfo().id)
         );
         cardSection.addItem(cardElement);
+        this.close();
       }
     })
     .catch((err) => {
@@ -159,7 +160,6 @@ function handleCardSubmit(cardData) {
     })
     .finally(() => {
       cardPopup.renderText(false);
-      this.close();
   });
 }
 
@@ -169,6 +169,7 @@ function handleAvatarSubmit(link) {
     .then(res => {
       if (res) {
         userInfo.setUserInfo(res);
+        this.close();
       }
     })
     .catch((err) => {
@@ -176,7 +177,6 @@ function handleAvatarSubmit(link) {
     })
     .finally(() => {
       avatarPopup.renderText(false);
-      this.close();
     });
 }
 
