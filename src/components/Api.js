@@ -3,13 +3,19 @@ export default class Api {
         this._options = options;
     }
 
+    _handleResponse(response) {
+        if (response.ok) {
+            return response.json();
+        }
+        else {
+            return Promise.reject(`Ошибка: ${response.status}`);
+        }
+    }
+
     getInitialCards() {
         return fetch(this._options.baseURL+"/cards", this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
@@ -18,10 +24,7 @@ export default class Api {
         this._options.method = "POST";
         return fetch(this._options.baseURL+"/cards", this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
@@ -29,20 +32,14 @@ export default class Api {
         this._options.method = "DELETE";
         return fetch(this._options.baseURL+`/cards/${id}`, this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
     getProfileInfo() {
         return fetch(this._options.baseURL+"/users/me", this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
@@ -51,10 +48,7 @@ export default class Api {
         this._options.method = "PATCH";
         return fetch(this._options.baseURL+"/users/me", this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
@@ -63,10 +57,7 @@ export default class Api {
         this._options.method = "PATCH";
         return fetch(this._options.baseURL+"/users/me/avatar", this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
@@ -74,10 +65,7 @@ export default class Api {
         this._options.method = "PUT";
         return fetch(this._options.baseURL+`/cards/${id}/likes`, this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 
@@ -86,10 +74,7 @@ export default class Api {
         console.log("DELETE")
         return fetch(this._options.baseURL+`/cards/${id}/likes`, this._options)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
+            return this._handleResponse(res);
         });
     }
 }
