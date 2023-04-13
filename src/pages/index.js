@@ -56,11 +56,7 @@ const api = new Api({
 
 const cardSection = new Section(
   (item) => {
-    const card = new Card(item, cardTemplateSelector, () => handleCardClick(item), handleLikeClick, handleDeleteClick);
-    const cardElement = card.generateCard(
-      card._ownerId === userInfo.getUserInfo().id,
-      card._likes.some(user => user._id === userInfo.getUserInfo().id)
-    );
+    const cardElement = createCard(item);
     cardSection.addItem(cardElement);
   }, cardListSelector
 );
@@ -70,6 +66,20 @@ const userInfo = new UserInfo({
   aboutSelector: profileAboutSelector,
   pictureSelector: profilePictureSelector
 });
+
+function createCard(cardData) {
+  const card = new Card(
+    cardData,
+    cardTemplateSelector,
+    () => handleCardClick(cardData),
+    handleLikeClick,
+    handleDeleteClick
+  );
+  return card.generateCard(
+    card._ownerId === userInfo.getUserInfo().id,
+    card._likes.some(user => user._id === userInfo.getUserInfo().id)
+  );
+}
 
 function handleCardClick(cardData) {
   imagePopup.open(cardData);
@@ -146,12 +156,8 @@ function handleCardSubmit(cardData) {
   api.addCard(cardData)
     .then(res => {
       if (res) {
-        const card = new Card(res, cardTemplateSelector, () => handleCardClick(res), handleLikeClick, handleDeleteClick);
-        const cardElement = card.generateCard(
-          true,
-          card._likes.some(user => user._id === userInfo.getUserInfo().id)
-        );
-        cardSection.addItem(cardElement);
+        const cardElement = createCard(res);
+        cardSection.addItem(cardElement); 
         this.close();
       }
     })
@@ -210,15 +216,11 @@ profileValidation.enableValidation();
 cardValidation.enableValidation();
 avatarValidation.enableValidation();
 
-api.getProfileInfo()
-  .then(userData => {
+Promise.all([api.getProfileInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
     userInfo.setUserInfo(userData);
-});
-
-api.getInitialCards()
-  .then(cards => {
     cardSection.renderItems(cards);
   })
   .catch((err) => {
     console.log(err);
-});
+  });
